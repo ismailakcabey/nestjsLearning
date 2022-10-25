@@ -13,9 +13,13 @@ export class RolesGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const header = request.header('userRole');
     console.log(request)
-    console.log(header+"a")
+    console.log(header)
     console.log(roles + " roles")
-    if(header == "admin") return true;
+    if(header === "admin") {
+      console.log("yetkili");
+      return true;
+    }
+    console.log("yetkisiz");
     return false;
   }
 } 

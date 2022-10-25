@@ -9,7 +9,7 @@ export function logger(req:Request , res:Response , next:NextFunction){
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(logger);
-  app.useGlobalGuards(new RolesGuard(new Reflector()));
+  //app.useGlobalGuards(new RolesGuard(new Reflector()));
   await app.listen(3000);
 }
 bootstrap();

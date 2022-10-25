@@ -8,6 +8,7 @@ import { UserService } from './user.service';
 import { UserModule } from './user.module';
 import { RolesGuard } from './roles.guard';
 import { Roles } from './roles.decoartor'
+import { UserDecorator , postDecorator} from './user.decorator';
 @Controller('user')
 // @UseGuards(RolesGuard)
 export class UserController {
@@ -17,6 +18,18 @@ export class UserController {
     getMiddle(){
         
         return "kullaniciler";
+    }
+
+    @Get('/decorator')
+    getDecorator(@UserDecorator('deneme') test:any) : string{
+        console.log(test + " my ")
+        return test;
+    }
+
+    @Post('/postDecorator')
+    postDecorator(@postDecorator('email') data:any) : string{
+        console.log(data + " my ")
+        return data;
     }
 
     @Get('/modules')
